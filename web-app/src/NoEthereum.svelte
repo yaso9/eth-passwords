@@ -1,0 +1,1 @@
+Could not find window.ethereum. Make sure Metamask is installed and logged in.
