@@ -20,6 +20,6 @@
 {#if $passwordStore}
     <div class="flex flex-col md:flex-row">
         <NewEntryForm on:created={getEntries} />
-        <EntryList {entries} />
+        <EntryList {entries} on:removed={getEntries} />
     </div>
 {/if}
