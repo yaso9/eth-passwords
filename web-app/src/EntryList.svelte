@@ -1,7 +1,10 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
-    import { passwordStore } from "./stores";
+
+    import CryptoJS from "crypto-es";
+
+    import { passwordStore, key } from "./stores";
 
     export let entries;
 
@@ -53,7 +56,7 @@
             class:rounded-t-md={idx === 0}
             class:rounded-b-md={idx === entries.length - 1}
             class="entry py-3 px-2 border-blue-500 bg-blue-400 flex justify-between">
-            <span>{entry}</span>
+            <span>{CryptoJS.AES.decrypt(entry, $key).toString(CryptoJS.enc.Utf8)}</span>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 inline"

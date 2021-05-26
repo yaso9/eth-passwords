@@ -1,7 +1,10 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
-    import { passwordStore } from "./stores";
+
+    import { AES } from "crypto-es/lib/aes";
+
+    import { passwordStore, key } from "./stores";
 
     const dispatch = createEventDispatcher();
 
@@ -29,7 +32,9 @@
             username = "";
             password = "";
 
-            const transaction = await $passwordStore.addEntry(entryText);
+            const transaction = await $passwordStore.addEntry(
+                AES.encrypt(entryText, $key).toString()
+            );
 
             toast.update({
                 description: "Waiting for the transaction to be mined",
