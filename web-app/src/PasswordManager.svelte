@@ -1,12 +1,16 @@
 <script>
-    import { passwordStore } from "./stores";
+    import CryptoJS from "crypto-es";
+
+    import { passwordStore, key } from "./stores";
     import EntryList from "./EntryList.svelte";
     import NewEntryForm from "./NewEntryForm.svelte";
 
     const getEntries = async () => {
-        $passwordStore
-            .getEntries()
-            .then((returnedEntries) => (entries = returnedEntries));
+        entries = (await $passwordStore.getEntries()).map((entry) =>
+            JSON.parse(
+                CryptoJS.AES.decrypt(entry, $key).toString(CryptoJS.enc.Utf8)
+            )
+        );
     };
 
     let loadedEntries = false;

@@ -67,7 +67,7 @@
 <div class="flex-1">
     <form
         on:submit={createEntry}
-        class="m-4 mr-2 py-3 px-2 bg-blue-400 rounded-md text-white">
+        class="m-4 md:mr-2 py-3 px-2 bg-blue-400 rounded-md text-white">
         <div class="flex items-center mb-2">
             <label for="url-input" class="w-32 mr-2 font-bold">URL:</label>
             <input

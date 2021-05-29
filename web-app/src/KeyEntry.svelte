@@ -36,7 +36,8 @@
 </script>
 
 <div class="flex justify-center" on:submit={handleKey}>
-    <div class="w-1/2 m-4 mr-2 py-3 px-2 bg-blue-400 rounded-md text-white">
+    <div
+        class="w-full md:w-1/2 m-4 py-3 px-2 bg-blue-400 rounded-md text-white">
         <h1>Enter Your Key</h1>
         <small>If you haven't used this app before, choose a key.</small>
 

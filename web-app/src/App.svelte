@@ -11,12 +11,14 @@
 	@tailwind utilities;
 </style>
 
-{#if window.ethereum}
-	{#if $key}
-		<PasswordManager />
+<div class="w-screen h-screen bg-gray-700">
+	{#if window.ethereum}
+		{#if $key}
+			<PasswordManager />
+		{:else}
+			<KeyEntry />
+		{/if}
 	{:else}
-		<KeyEntry />
+		<NoEthereum />
 	{/if}
-{:else}
-	<NoEthereum />
-{/if}
+</div>
