@@ -2,7 +2,13 @@
 	import NoEthereum from "./NoEthereum.svelte";
 	import PasswordManager from "./PasswordManager.svelte";
 	import KeyEntry from "./KeyEntry.svelte";
-	import { key } from "./stores";
+	import NoContract from "./NoContract.svelte";
+	import { key, passwordStore } from "./stores";
+
+	let contractFound = true;
+
+	$: if ($passwordStore)
+		$passwordStore.getEntries().catch((err) => (contractFound = false));
 </script>
 
 <style global lang="postcss">
@@ -13,10 +19,14 @@
 
 <div class="w-screen h-screen bg-gray-700">
 	{#if window.ethereum}
-		{#if $key}
-			<PasswordManager />
+		{#if contractFound}
+			{#if $key}
+				<PasswordManager />
+			{:else}
+				<KeyEntry />
+			{/if}
 		{:else}
-			<KeyEntry />
+			<NoContract />
 		{/if}
 	{:else}
 		<NoEthereum />
