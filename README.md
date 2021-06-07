@@ -1,11 +1,9 @@
 # ETH Passwords
+ETH Passwords is a password manager built on the Ethereum blockchain. All sensitive information is encrypted with AES encryption to keep it secure.
 
-This is a password manager built on ethereum.
+## Why?
+I wanted to learn about Ethereum smart contracts and dapps. This project was a good introduction to both.
 
-## TODO
-- [x] Encrypt the entries. At the moment they are plain text on the blockchain, so anybody can see them.
-- [x] Format the entries.
-- [x] Add buttons to delete entries.
-- [x] Style the no Metamask found message.
-- [x] Add a message that shows if the user is not on Ropsten.
-- [ ] Update this README and the one in the web-app folder.
+## Limitations
+While the ETH Passwords app itself is very usable, gas charges for adding data to the blockchain are pretty high. This makes using it a bit expensive. Reading from the blockchain, however, is free.
+
